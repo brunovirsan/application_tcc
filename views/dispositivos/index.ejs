@@ -1,0 +1,234 @@
+<% include ../template/header.ejs %>
+
+<div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12 col-lg-7">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <div style="display: inline">
+                    <h6 class="m-0 font-weight-bold text-success">Dispositivos</h6>
+
+                </div>
+                <div class="col-sm-4" style="float: left">
+                    <form class="navbar-form">
+                      <span class="bmd-form-group">
+                          <div class="input-group no-border">
+                            <input type="text" value="" class="form-control" placeholder="Pesquisar">
+                            <button type="submit" class="btn  btn-group-sm">
+                                    <i class="fas fa-search"></i>
+                            </button>
+                      </div>
+                      </span>
+                    </form>
+
+                </div>
+
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal"
+                        data-whatever="@mdo">
+                    <i class="fa fa-plus" aria-hidden="true">
+                    </i> Adicionar
+                </button>
+
+                <div class="">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead class="text-success">
+                            <tr>
+                                <th>id</th>
+                                <th>Nome</th>
+                               <!-- <th>Sensor</th> -->
+                                <th>Tópico</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% if(dispositivos){ %>
+                                <% for (var i = 0; i < dispositivos.length; i++){ %>
+                                    <tr>
+                                        <td><%- dispositivos[i].id_dispositivo %></td>
+                                        <td><%- dispositivos[i].nome %></td>
+                                       <!-- <td> <%- /*dispositivos[i].sensor*/ %> </td> -->
+                                        <td> <%- dispositivos[i].topico %> </td>
+                                        <td class="td-actions"><a class="" href="#">
+                                                <button type="submit" rel="tooltip" data-placement="left"
+                                                        title="Remove dispositivo" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </a>
+                                            <a class="td-actions btn btn-success btn-sm"
+                                               href="/dispositivos/<%- dispositivos[i].id_dispositivo %>" rel="tooltip"
+                                               data-placement="left" title="Editar"><i class="fas fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+
+                            <% }} %>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-5">
+                        <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">...
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                            <ul class="pagination pagination-sm">
+                                <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a
+                                            href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+                                            class="page-link">Previous</a></li>
+                                <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable"
+                                                                                data-dt-idx="1" tabindex="0"
+                                                                                class="page-link">1</a></li>
+                                <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                          data-dt-idx="2" tabindex="0"
+                                                                          class="page-link">2</a></li>
+                                <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                          data-dt-idx="3" tabindex="0"
+                                                                          class="page-link">3</a></li>
+                                <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                          data-dt-idx="4" tabindex="0"
+                                                                          class="page-link">4</a></li>
+                                <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                          data-dt-idx="5" tabindex="0"
+                                                                          class="page-link">5</a></li>
+                                <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
+                                                                          data-dt-idx="6" tabindex="0"
+                                                                          class="page-link">6</a></li>
+                                <li class="paginate_button page-item next" id="dataTable_next"><a href="#"
+                                                                                                  aria-controls="dataTable"
+                                                                                                  data-dt-idx="7"
+                                                                                                  tabindex="0"
+                                                                                                  class="page-link">Next</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!--Modal cadastrar-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header mod-head">
+                <h6 class="modal-title tit" id="exampleModalLabel">Cadastrar Dispositivo</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/dispositivo" method="post">
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Nome:</label>
+                        <input type="text" name="dispositivo[nome]" class="form-control" id="recipient-name" required  minlength="3">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Sensor:</label>
+                        <select class="form-control" name="dispositivo[sensor]">
+                             <option value="">Selecione o sensor...</option>
+                            <%if(sensors){
+                                for(var i = 0; i < sensors.length; i++){ %>
+                                    <option value="<%= sensors[i].id_sensor %>"> <%= sensors[i].id_sensor %>  - <%= sensors[i].nome %> </option>
+
+                                <%}
+
+                            }%>
+                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Tópico:</label>
+                        <input type="text" name="dispositivo[topico]" required  class="form-control" id="recipient-name">
+                        <input type="hidden" name="dispositivo[idUsuario]" value="<%- idUser %>">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Fim do modal-->
+
+<!--Modal editar-->
+
+<div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastro Dispositivos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/dispositivo/<%- //id  %>?_method=put" method="post">
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Nome:</label>
+                        <input type="text" name="dispositivo[nome]" class="form-control" id="recipient-name" required
+                               minlength="3">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Plataforma:</label>
+                        <input type="text" name="dispositivo[plataforma]" class="form-control" id="recipient-name"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Grupo:</label>
+                        <select class="form-control" name="dispositivo[grupo]" id="exampleFormControlSelect1">
+                            <option>1</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Sensor:</label>
+                        <input type="text" name="dispositivo[sensor]" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--fim editar-->
+
+<!--Java Script chamada do modal-->
+<script !src="">
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+</script>
+
+<!--Fim js modal-->
+
+
+<% include ../template/footer.ejs %>

@@ -1,0 +1,192 @@
+<% include ./../header-d.ejs %>
+
+<div class="row" style="height: 100%;border-top-width: 0px;margin-top: 0px;">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+        <div class="card shadow mb-4" style="height: 100vh;">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                <div style="display: inline">
+                    <h6 class="m-0 font-weight-bold text-success">Plantio / Variaveis_Monitoradas</h6>
+
+                </div>
+                <div class="col-sm-4" style="float: left;">
+                    <form class="navbar-form">
+                        <span class="bmd-form-group">
+                            <div class="input-group no-border">
+                                <input type="text" value="" class="form-control" placeholder="Pesquisar">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-success btn-group-sm">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </span>
+                    </form>
+
+                </div>
+
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                    <div class="row col-sm-4">
+                    <h4>Dispositivos</h4>
+                    <button type="button" class="btn btn-success btn-sm bt-acess" data-toggle="modal"
+                        data-target="#exampleModal" data-whatever="@mdo">
+                        <i class="fa fa-plus" aria-hidden="true">
+                        </i> Adicionar
+                    </button>
+                    </div>
+                <hr>
+
+                <div class="">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead class="text-success thead-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Descrição</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--Modal cadastrar-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header mod-head">
+                <h6 class="modal-title tit" id="exampleModalLabel">Adicionar Dispositivo</h6>
+                <button type="button" class="close lose-md" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/plantio/variaveis/cadastrar_variaveis" method="post">
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Nome:</label>
+                        <input type="text" placeholder="Nome" name="variavel[nome]" class="form-control" id="recipient-name" required
+                            minlength="3">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Sensor:</label>
+                        <select class="form-control" name="dispositivo[sensor]">
+                             <option value="">Selecione o dispositivo...</option>
+                            <%if(sensors){
+                                for(var i = 0; i < sensors.length; i++){ %>
+                                    <option value="<%= sensors[i].id_sensor %>"> <%= sensors[i].id_sensor %>  - <%= sensors[i].nome %> </option>
+
+                                <%}
+
+                            }%>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Intervalo de captura:</label>
+                        <input type="number" placeholder="Intervalo em milissegundos" name="variavel[nome]" class="form-control" id="recipient-name" required
+                            minlength="3">
+                    </div>
+                    <input type="hidden" name="variavel[id_variavel]" value="<%=id%>" class="form-control" id="recipient-name">
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger waves-effect waves-light"
+                            data-dismiss="modal">Cancelar
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <button type="submit" class="btn btn-success waves-effect waves-light">Cadastrar
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--Fim do modal-->
+
+<!--Modal editar-->
+
+<div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastro Dispositivos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/dispositivo/<%- //id  %>?_method=put" method="post">
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Nome:</label>
+                        <input type="text" name="dispositivo[nome]" class="form-control" id="recipient-name" required
+                            minlength="3">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Plataforma:</label>
+                        <input type="text" name="dispositivo[plataforma]" class="form-control" id="recipient-name"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Grupo:</label>
+                        <select class="form-control" name="dispositivo[grupo]" id="exampleFormControlSelect1">
+                            <option>1</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Sensor:</label>
+                        <input type="text" name="dispositivo[sensor]" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--fim editar-->
+
+<!--Java Script chamada do modal-->
+<script !src="">
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+    $('#meuModal').on('shown.bs.modal', function () {
+        $('#editarModal').trigger('focus')
+    })
+</script>
+
+<!--Fim js modal-->
+
+
+<% include ./../footer-d.ejs %>

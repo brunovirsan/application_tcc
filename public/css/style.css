@@ -1,0 +1,160 @@
+
+.mod-head{
+    background-color: #00c851;
+
+  }
+.tit {
+    color: #ffffff;
+  }
+
+  .close{
+    color: #fff!important;
+    background-color: #fff;
+
+  }
+
+
+element.style {
+}
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+[type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.btn-primary {
+    background-color:#000000!important;
+    color: #00c851;
+}
+.btn {
+    margin: .375rem;
+    color: inherit;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    white-space: normal;
+    cursor: pointer;
+    border: 0;
+    border-radius: .125rem;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    padding: .84rem 2.14rem;
+    font-size: .81rem;
+}
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.btn-primary {
+    color: #00c851;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+[type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+}
+button, select {
+    text-transform: none;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button {
+    border-radius: 0;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.btn-success {
+  background-color: #00c851!important;
+  color: #fff;
+}
+.input-group {
+  align-items: center;
+  margin-inline: 0;
+}
+
+
+element.style {
+}
+.sidebar-dark hr.sidebar-divider {
+    border-top: 1px solid rgb(91, 192, 118);
+}
+
+.table td, .table th {
+    padding: .35rem;
+    vertical-align: middle;
+    text-align: -webkit-center;
+}
+
+.td-actions{
+    color: #3b8525;
+}
+.td-actions:hover{
+    color: #00c851;
+    
+}
+
+.bt-acess{
+    margin-bottom: 3px;
+    margin-top: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-left: 4px;
+    margin-right: 4px;
+                
+}
+
+#link-line:hover{
+    background-color: aquamarine;
+}
+
+.col-sm-4 {
+    align-items: baseline;
+}
+.card {
+    margin: 0.25em;
+}
+
+.highcharts-figure, .highcharts-data-table table{
+    width: auto;
+}
+
+.mb-4, .my-4{
+    margin-bottom: .25rem!important;
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <title>Erro - Page Not Found</title>
+</head>
+<body>
+<div class="container-fluid">
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="text-center">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Oops:
+                        <small>Algo aconteceu de terrível - <b>(*=*)</b></small>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <p> <%- error.message %> </p>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">Voltar a <a href="/">Home Page?</a></li>
+                        <li class="list-group-item">Esqueça que isso aconteceu, e vá para <a href="/">sua <b>Página Inicial</b></a> :)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

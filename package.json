@@ -1,0 +1,31 @@
+{
+  "name": "iot-agro",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "assert": "^1.4.1",
+    "chart.js": "^2.7.2",
+    "consign": "^0.1.6",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "express-load": "^1.1.16",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.3.0",
+    "http-errors": "~1.6.2",
+    "method-override": "^3.0.0",
+    "moment": "^2.22.2",
+    "mongodb": "^3.1.8",
+    "mongoose": "^5.3.2",
+    "morgan": "~1.9.0",
+    "mqtt": "^2.18.8",
+    "node-pre-gyp": "^0.14.0",
+    "socket.io": "^2.2.0",
+    "sqlite3": "^4.2.0",
+    "sys": "0.0.1"
+  }
+}

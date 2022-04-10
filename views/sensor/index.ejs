@@ -1,0 +1,120 @@
+<% include ../template/header.ejs %>
+
+<div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <div style="display: inline">
+                    <h6 class="m-0 font-weight-bold text-success">Sensores</h6>
+
+                </div>
+            
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal"
+                        data-whatever="@mdo">
+                    <i class="fa fa-plus" aria-hidden="true">
+                    </i> Adicionar
+                </button>
+            
+                <hr>
+
+                <div class="">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead class="text-success">
+                            <tr>
+                                <th>id</th>
+                                <th>Nome</th>
+                                <th>Sensor</th>
+                                <th>Descrição</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%if(sensores){
+                                for(var i = 0; i < sensores.length; i++){ %>
+                                    <tr>
+                                        <td><%= sensores[i].id_sensor %></td>
+                                        <td><%= sensores[i].nome %></td>
+                                        <td><%= sensores[i].sigla_ident %></td>
+                                        <td><%= sensores[i].descricao %></td>
+                                    </tr>
+
+                                <%}
+
+
+                            }%>
+                            
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!--Modal cadastrar-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title justify-content-center" id="exampleModalLabel">Cadastrar Sensor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/sensor" method="post">
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Nome:</label>
+                        <input type="text" name="sensor[nome]" class="form-control" id="recipient-name" required  minlength="3">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Identificador:</label>
+                        <input type="text" name="sensor[sigla_ident]"  class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Descrição:</label>
+                        <input type="text" name="sensor[descricao]" required  class="form-control" id="recipient-name">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Fim do modal-->
+
+<!--Java Script chamada do modal-->
+<script !src="">
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+</script>
+
+<!--Fim js modal-->
+
+
+<% include ../template/footer.ejs %>
